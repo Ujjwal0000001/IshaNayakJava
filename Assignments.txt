@@ -1,0 +1,487 @@
+Assignment 2
+1. public class SwapNumbers {
+public static void main(String []args){
+int a =10;
+int b= 20;
+System.out.println("Before Swap: a = "+a+",b ="+b);
+a = a+b;
+b=a-b;
+b=a-b;
+System.out.println("After Swap : a="+a+",b="+b);
+}
+}
+
+
+2.public class Calculator {
+
+    public static void main(String[] args) {
+        // Check if the correct number of arguments is provided
+        if (args.length != 3) {
+            System.out.println("Usage: java Calculator <number1> <operator> <number2>");
+            System.out.println("Operators: +, -, *, /");
+            return; // Exit the program
+        }
+
+        try {
+            double num1 = Double.parseDouble(args[0]);
+            String operator = args[1];
+            double num2 = Double.parseDouble(args[2]);
+
+            double result = 0;
+            switch (operator) {
+                case "+":
+                    result = num1 + num2;
+                    break;
+                case "-":
+                    result = num1 - num2;
+                    break;
+                case "*":
+                    result = num1 * num2;
+                    break;
+                case "/":
+                    if (num2 == 0) {
+                        System.out.println("Error: Division by zero is not allowed.");
+                        return; // Exit the program
+                    }
+                    result = num1 / num2;
+                    break;
+                default:
+                    System.out.println("Error: Invalid operator.  use +, -, *, or /.");
+                    return; // Exit the program
+            }
+            System.out.println("Result: " + result);
+
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Invalid number format. ensure numbers are valid.");
+        }
+    }
+}
+
+3.
+import java.util.Scanner;
+
+public class AgeCalculator {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter your birth year: ");
+        int birthYear = sc.nextInt();
+        int currentYear = 2024;
+        int age = currentYear - birthYear;
+        System.out.println("You are " + age + " years old.");
+    }
+}
+
+4.
+import java.util.Scanner;
+
+public class BMICalculator {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter your weight in kg: ");
+        double weight = sc.nextDouble();
+        System.out.print("Enter your height in meters: ");
+        double height = sc.nextDouble();
+
+        double bmi = weight / (height * height);
+        System.out.printf("Your BMI is %.2f.\n", bmi);
+scanner.close();
+    }
+}
+5.import java.util.Scanner;
+
+public class OddEvenChecker {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int number = sc.nextInt();
+
+        if (number % 2 == 0) {
+            System.out.println("The number is Even.");
+        } else {
+            System.out.println("The number is Odd.");
+        }
+    }
+}
+6.import java.util.Scanner;
+
+public class ITCityChecker {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter city name: ");
+        String city = sc.nextLine().toLowerCase();
+
+        switch (city) {
+            case "delhi":
+            case "mumbai":
+            case "kolkatta":
+            case "bangalore":
+            case "chennai":
+            case "hyderabad":
+                System.out.println("This is an IT City.");
+                break;
+            default:
+                System.out.println("This is NOT an IT City.");
+        }
+    }
+}
+                                         Assignment 3
+1.import java.util.Scanner;
+
+public class GradeChecker {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter your score (0-100): ");
+        int score = sc.nextInt();
+
+        if (score >= 90 && score <= 100) {
+            System.out.println("Your grade is A.");
+        } else if (score >= 80) {
+            System.out.println("Your grade is B.");
+        } else if (score >= 70) {
+            System.out.println("Your grade is C.");
+        } else if (score >= 60) {
+            System.out.println("Your grade is D.");
+        } else if (score >= 0) {
+            System.out.println("Your grade is F.");
+        } else {
+            System.out.println("Invalid score.");
+        }
+    }
+}
+2.import java.util.Scanner;
+
+public class LargestNumber {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter first number: ");
+        int a = sc.nextInt();
+        System.out.print("Enter second number: ");
+        int b = sc.nextInt();
+        System.out.print("Enter third number: ");
+        int c = sc.nextInt();
+
+        int largest = a;
+
+        if (b > largest) {
+            largest = b;
+        }
+        if (c > largest) {
+            largest = c;
+        }
+
+        System.out.println("The largest number is " + largest);
+    }
+}
+3.import java.util.Scanner;
+
+public class TriangleType {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter side 1: ");
+        int a = sc.nextInt();
+        System.out.print("Enter side 2: ");
+        int b = sc.nextInt();
+        System.out.print("Enter side 3: ");
+        int c = sc.nextInt();
+
+        if (a == b && b == c) {
+            System.out.println("The triangle is equilateral.");
+        } else if (a == b || b == c || a == c) {
+            System.out.println("The triangle is isosceles.");
+        } else {
+            System.out.println("The triangle is scalene.");
+        }
+    }
+}
+4.import java.util.Scanner;
+
+public class PasswordStrength {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a password: ");
+        String password = scanner.nextLine();
+        String strength = passwordStrength(password);
+        System.out.println("Password strength: " + strength);
+        scanner.close();
+    }
+
+    public static String passwordStrength(String password) {
+        int n = password.length();
+        boolean hasLower = false, hasUpper = false, hasDigit = false, hasSpecialChar = false;
+
+        if (n < 6) {
+            return "Weak";
+        }
+
+        for (char c : password.toCharArray()) {
+            if (Character.isLowerCase(c)) {
+                hasLower = true;
+            } else if (Character.isUpperCase(c)) {
+                hasUpper = true;
+            } else if (Character.isDigit(c)) {
+                hasDigit = true;
+            } else {
+                hasSpecialChar = true;
+            }
+        }
+
+        if (n >= 8 && hasLower && hasUpper && hasDigit && hasSpecialChar) {
+            return "Strong";
+        } else if (n >= 6 && hasLower && hasUpper && hasDigit) {
+            return "Medium";
+        } else {
+            return "Weak";
+        }
+    }
+}
+
+5.import java.util.Scanner;
+
+public class ReverseNumber {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter an integer: ");
+        int number = sc.nextInt();
+        int reversed = 0;
+
+        while (number != 0) {
+            int digit = number % 10;
+            reversed = reversed * 10 + digit;
+            number /= 10;
+        }
+
+        System.out.println("The reversed number is " + reversed);
+    }
+}
+6.import java.util.Scanner;
+
+public class PrimeCheck {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int num = sc.nextInt();
+        boolean isPrime = true;
+
+        if (num <= 1) {
+            isPrime = false;
+        } else {
+            for (int i = 2; i <= Math.sqrt(num); i++) {
+                if (num % i == 0) {
+                    isPrime = false;
+                    break;
+                }
+            }
+        }
+
+        if (isPrime) {
+            System.out.println(num + " is a prime number.");
+        } else {
+            System.out.println(num + " is not a prime number.");
+        }
+    }
+}
+7.import java.util.Scanner;
+
+public class SumOfDigits {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter an integer: ");
+        int number = sc.nextInt();
+        int sum = 0;
+
+        while (number != 0) {
+            sum += number % 10;
+            number /= 10;
+        }
+
+        System.out.println("The sum of the digits is " + sum);
+    }
+}
+8.public class StarPattern {
+    public static void main(String[] args) {
+        // First half
+        for (int i = 1; i <= 5; i++) {
+            for (int j = 1; j <= 2*i - 1; j++) {
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+        // Second half
+        for (int i = 4; i >= 1; i--) {
+            for (int j = 1; j <= 2*i - 1; j++) {
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+    }
+}
+Assignment 4
+1.import java.util.Scanner;
+
+public class Employee {
+    private int salary;
+    private int workHoursPerDay;
+
+    // Method to input salary and hours
+    public void getInfo(int salary, int hours) {
+        this.salary = salary;
+        this.workHoursPerDay = hours;
+    }
+
+    // Adds $10 if salary is less than 500
+    public void addSal() {
+        if (salary < 500) {
+            salary += 10;
+        }
+    }
+
+    // Adds $5 if working hours > 6
+    public void addWork() {
+        if (workHoursPerDay > 6) {
+            salary += 5;
+        }
+    }
+
+    // Method to print final salary
+    public void printFinalSalary() {
+        System.out.println("Final Salary: $" + salary);
+    }
+
+    // Main method to test
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Employee emp = new Employee();
+
+        System.out.print("Enter salary: ");
+        int sal = sc.nextInt();
+
+        System.out.print("Enter working hours per day: ");
+        int hours = sc.nextInt();
+
+        emp.getInfo(sal, hours);
+        emp.addSal();
+        emp.addWork();
+        emp.printFinalSalary();
+    }
+}
+2. 
+import java.util.Scanner;
+
+class Student {
+    private String name;
+    private int yearOfJoining;
+    private String address;
+
+    // Constructor
+    public Student(String name, int yearOfJoining, String address) {
+        this.name = name;
+        this.yearOfJoining = yearOfJoining;
+        this.address = address;
+    }
+
+    // Method to display student info
+    public void displayInfo() {
+        System.out.printf("%-10s %-15d %-20s\n", name, yearOfJoining, address);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Student[] students = new Student[3];
+
+        for (int i = 0; i < 3; i++) {
+            System.out.println("\nEnter details for student " + (i + 1) + ":");
+            System.out.print("Name: ");
+            String name = sc.nextLine();
+            System.out.print("Year of Joining: ");
+            int year = sc.nextInt();
+            sc.nextLine(); // Consume newline
+            System.out.print("Address: ");
+            String address = sc.nextLine();
+
+            students[i] = new Student(name, year, address);
+        }
+
+        System.out.printf("\n%-10s %-15s %-20s\n", "Name", "Year of Joining", "Address");
+        for (Student s : students) {
+            s.displayInfo();
+        }
+    }
+}
+3.
+import java.util.Scanner;
+
+class BankAccount {
+    private String accountHolder;
+    private double balance;
+
+    // Constructor
+    public BankAccount(String accountHolder, double initialBalance) {
+        this.accountHolder = accountHolder;
+        this.balance = initialBalance;
+    }
+
+    // Method to deposit money
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            System.out.println("$" + amount + " deposited successfully.");
+        } else {
+            System.out.println("Invalid deposit amount.");
+        }
+    }
+
+    // Method to withdraw money
+    public void withdraw(double amount) {
+        if (amount > 0 && amount <= balance) {
+            balance -= amount;
+            System.out.println("$" + amount + " withdrawn successfully.");
+        } else {
+            System.out.println("Insufficient balance or invalid amount.");
+        }
+    }
+
+    // Method to show balance
+    public void showBalance() {
+        System.out.println("Account Holder: " + accountHolder);
+        System.out.println("Current Balance: $" + balance);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter account holder name: ");
+        String name = sc.nextLine();
+        System.out.print("Enter initial balance: ");
+        double initialBalance = sc.nextDouble();
+
+        BankAccount account = new BankAccount(name, initialBalance);
+
+        while (true) {
+            System.out.println("\n1. Deposit\n2. Withdraw\n3. Show Balance\n4. Exit");
+            System.out.print("Choose an option: ");
+            int choice = sc.nextInt();
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter deposit amount: ");
+                    account.deposit(sc.nextDouble());
+                    break;
+                case 2:
+                    System.out.print("Enter withdrawal amount: ");
+                    account.withdraw(sc.nextDouble());
+                    break;
+                case 3:
+                    account.showBalance();
+                    break;
+                case 4:
+                    System.out.println("Thank you!");
+                    return;
+                default:
+                    System.out.println("Invalid choice.");
+            }
+        }
+    }
+}
+
+
